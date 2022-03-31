@@ -1,0 +1,18 @@
+html {
+    background-image: url("../img/dark-wood-wall.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}
+
+.iconDisco {
+  width : 30px;
+  height: 100%;
+}
+
+.iconDiscoHover {
+  width: 35px;
+  height: 100%;
+}
