@@ -1,7 +1,4 @@
 <template>
-  <div v-if="showAddIndividu == true">
-    <AddIndividuVue @onClose="showAddIndividu = false" />
-  </div>
   <div class="flex flex-col container mx-auto my-10">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-10 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -15,49 +12,19 @@
                   scope="col"
                   class="px-6 py-3 text-left text-sm font-medium text-white uppercase tracking-wider"
                 >
-                  Id
+                  Date
                 </th>
                 <th
                   scope="col"
                   class="px-6 py-3 text-left text-sm font-medium text-white uppercase tracking-wider"
                 >
-                  Nom
+                  Commentaire
                 </th>
                 <th
                   scope="col"
                   class="px-6 py-3 text-left text-sm font-medium text-white uppercase tracking-wider"
                 >
-                  Prénom
-                </th>
-                <th
-                  scope="col"
-                  class="px-6 py-3 text-left text-sm font-medium text-white uppercase tracking-wider"
-                >
-                  Pseudo
-                </th>
-                <th
-                  scope="col"
-                  class="px-6 py-3 text-left text-sm font-medium text-white uppercase tracking-wider"
-                >
-                  lieu
-                </th>
-                <th
-                  scope="col"
-                  class="px-6 py-3 text-left text-sm font-medium text-white uppercase tracking-wider"
-                >
-                  action
-                </th>
-                <th
-                  scope="col"
-                  class="px-6 py-3 text-left text-sm font-medium text-white uppercase tracking-wider"
-                >
-                  téléphone
-                </th>
-                <th
-                  scope="col"
-                  class="pl-6 text-left text-sm font-medium text-white uppercase tracking-wider"
-                >
-                  Créateur
+                  Membre
                 </th>
                 <th
                   scope="col"
@@ -119,12 +86,10 @@
                     class="cursor-pointer border-2 border-blue-500 rounded mx-5 hover:bg-gray-500"
                     src="../assets/img/icons8-edit-24.png"
                   />
-                  <router-link :to="{ name: 'Information' }">
-                    <img
-                      class="cursor-pointer border-2 border-orange-500 rounded hover:bg-gray-500"
-                      src="../assets/img/icons8-document-24.png"
-                    />
-                  </router-link>
+                  <img
+                    class="cursor-pointer border-2 border-orange-500 rounded hover:bg-gray-500"
+                    src="../assets/img/icons8-document-24.png"
+                  />
                 </td>
               </tr>
             </tbody>
@@ -136,31 +101,12 @@
 </template>
 
 <script setup>
-//#region Import
-import AddIndividuVue from "../components/AddIndividu.vue";
-import { onBeforeMount, ref } from "vue";
-import router from "../router/main.js";
-import { getAllIndividu } from "../utilities/individuRequest.js";
-//#endregion
+import { Ref } from "vue";
 
-//#region Variables
-const individus = ref([]);
-const showAddIndividu = ref(false);
-//#endregion
-
-//#region Méthodes
-
-const openAddIndividuModale = () => {
-  showAddIndividu.value = true;
-};
-
-const goToAddIndividu = () => {
-  router.push("/addIndividu");
-};
-
-//#endregion
-
-onBeforeMount(async () => {
-  individus.value = await getAllIndividu();
+const commentaire = ref({
+  commentaire: "",
+  date:"",
+  idUser:"",
+  idIndvidu:"",
 });
 </script>

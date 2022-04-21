@@ -1,24 +1,26 @@
 <template>
-  <div class="bg-red-800 h-auto flex justify-between items-center pl-4 pr-4">
+  <div class="bg-green-800 h-auto flex justify-between items-center pl-4 pr-4">
+    <img src="../../public/favicon.ico" class="iconScu mr-3"/>
     <h1 class="text-white text-2xl font-bold justify-start w-1/3">
-      Console <br />
+      Console
       d'administration
     </h1>
     <div class="w-1/3">
-      <nav class="px-8 pt-2 shadow-md ">
+      <nav class="px-8 pt-2 shadow-md">
         <div class="flex justify-center">
           <router-link
-            :to="{name:'Home'}"
-            class="no-underline text-white border-b-2 border-teal-dark uppercase tracking-wide font-bold text-xs py-3 mr-8"
+            :to="{ name: 'Home' }"
+            id="btnHome"
+            class="no-underline text-white border-b-2 border-transparent uppercase tracking-wide font-bold text-xs hover:border-gray-400 hover:text-sm py-3 mr-8"
             type="button"
           >
             Home
           </router-link>
           <router-link
-            :to="{name: 'Member'}"
+            :to="{ name: 'Member' }"
+            id="btnMember"
             class="no-underline text-white border-b-2 border-transparent uppercase tracking-wide font-bold text-xs hover:border-gray-400 hover:text-sm py-3 mr-8"
             type="button"
-            @click="goToAllMembers"
           >
             Members
           </router-link>
@@ -34,7 +36,7 @@
     </div>
     <div class="w-1/3 flex justify-end">
       <button
-        class="px-2 border-white rounded-md border-2 text-xl text-white font-semibold hover:font-bold hover:border-4 hover:bg-white hover:text-red-800"
+        class="pb-1 px-2 border-white rounded-md border-2 text-xl text-white font-semibold hover:font-bold hover:border-4 hover:bg-white hover:text-red-800"
       >
         Login
       </button>
@@ -46,10 +48,4 @@
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-
-const goToAllMembers = () => {
-  router.push("/members");
-};
-
-
 </script>
