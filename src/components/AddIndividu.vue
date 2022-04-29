@@ -58,26 +58,6 @@
           />
         </div>
       </div>
-      <div class="mt-3 text-center">
-        <label class="block text-lg font-bold">Lieu</label>
-        <input
-          class="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-          type="text"
-          id="individuLieu"
-          placeholder="Entrez le lieu"
-          v-model="individu.location"
-        />
-      </div>
-      <div class="mt-3 text-center">
-        <label class="block text-lg font-bold">Action</label>
-        <input
-          class="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-          type="text"
-          id="individuAction"
-          placeholder="Entrez l'action"
-          v-model="individu.action"
-        />
-      </div>
 
       <div class="mt-10 items-center flex justify-center mb-3">
         <button
@@ -103,34 +83,31 @@ const individu = ref({
   lastName: "",
   surname: "",
   phoneNumber: "",
-  location: "",
-  action: "",
-  userId: "1",
+  idUser: "1",
 });
 
 const closeModale = () => {
-  emit("onClose", false)
-}
+  emit("onClose", false);
+};
 
 const insertIndividu = async () => {
-  await createIndividu(individu.value).then((value) => {
-    console.log(value);
-    if (value == true) {
-      console.log("good");
-      closeModale()
-    }
-  });
+  if (
+    individu.value.firstName ||
+    individu.value.lastName ||
+    individu.value.surname ||
+    individu.value.phoneNumber
+  ) {
+    await createIndividu(individu.value).then((value) => {
+      console.log(value);
+      if (value == true) {
+        console.log("good");
+        closeModale();
+      }
+    });
+  }
 };
 </script>
 
 <style scoped>
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 99;
-  background-color: rgba(0, 0, 0, 0.3);
-}
+
 </style>

@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col container mx-auto my-10">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-10 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+    <div class="-my-2">
+      <div class="align-middle inline-block min-w-full">
         <div
-          class="shadow overflow-hidden border-b border-gray-500 sm:rounded-lg"
+          class="shadow overflow-hidden border-b border-gray-500 sm:rounded-lg mx-12" 
         >
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-800 bg-opacity-80">
@@ -101,7 +101,7 @@
 </template>
 
 <script setup>
-import { Ref } from "vue";
+import { ref } from "vue";
 
 const commentaire = ref({
   commentaire: "",

@@ -1,9 +1,12 @@
 <template>
+  <div v-if="showAddMember == true">
+    <AddMember @onClose="showAddMember = false"></AddMember>
+  </div>
   <div class="flex flex-col container mx-auto my-10">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+    <div class="-my-2">
+      <div class="py-2 align-middle inline-block min-w-full">
         <div
-          class="shadow overflow-hidden border-b border-gray-500 sm:rounded-lg"
+          class="shadow overflow-hidden border-b border-gray-500 sm:rounded-lg mx-12"
         >
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-800 bg-opacity-80">
@@ -54,7 +57,7 @@
                   scope="col"
                   class="pl-6 text-left text-sm font-medium text-white uppercase tracking-wider"
                 >
-                  is_admin
+                  role
                 </th>
                 <th
                   scope="col"
@@ -63,7 +66,7 @@
                   <img
                     class="cursor-pointer"
                     src="../assets/img/icons8-macos-maximiser-30.png"
-                    @click="openAddComponent"
+                    @click="openAddMemberModale"
                   />
                 </th>
               </tr>
@@ -121,11 +124,23 @@
 <script setup>
 import { ref, onBeforeMount } from "vue";
 import { getAllMembers } from "../utilities/memberRequest.js";
+import AddMember from "../components/AddMember.vue";
 
-const members = ref([])
+const members = ref([]);
+const showAddMember = ref(false);
+
+const openAddMemberModale = () => {
+  showAddMember.value = true;
+};
 
 onBeforeMount(async () => {
   members.value = await getAllMembers();
-  console.log(members.value);
+  for (const member of members.value) {
+    if (member.is_admin == true) {
+      member.is_admin = "administrateur";
+    } else {
+      member.is_admin = "member";
+    }
+  }
 });
 </script>
